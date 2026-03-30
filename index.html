@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewArt ForYou</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --soft: #1f2937;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: #334155;
+      --brand: #22c55e;
+      --brand-dark: #16a34a;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.18);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .logo span {
+      color: var(--brand);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    nav a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border: 1px solid rgba(134, 239, 172, 0.22);
+      margin-bottom: 16px;
+      font-size: 0.92rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      height: 420px;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .price {
+      display: inline-block;
+      font-weight: 700;
+      color: #86efac;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .about-box,
+    .contact-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-box p,
+    .contact-box p,
+    .contact-box li {
+      color: var(--muted);
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 0.94rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about,
+      .products-grid,
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-grid,
+      .about,
+      .products-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Din<span>Business</span></div>
+      <nav>
+        <ul>
+          <li><a href="#produkter">Produkter</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+          <li><a href="#bilder">Bilder</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Konst och kreativa verk</div>
+          <h1>Unik konst och handgjorda verk på en enkel hemsida</h1>
+          <p>
+            En enkel hemsida för att visa upp konstverk, bilder, beskrivningar och kontaktuppgifter. Sidan är nu anpassad efter Instagram-kontot NewArt ForYou och kan fyllas på med fler riktiga verk senare.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#produkter">Se produkter</a>
+            <a class="btn btn-secondary" href="#kontakt">Kontakta oss</a>
+          </div>
+          <p class="note">Tips. Byt namn, bilder, priser och kontaktinfo längre ner i koden.</p>
+        </div>
+
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80" alt="Huvudbild för business" />
+        </div>
+      </div>
+    </section>
+
+    <section id="produkter">
+      <div class="container">
+        <div class="section-head">
+          <h2>Produkter</h2>
+          <p>Här är exempel på tre produkter. Byt bild, namn, text och pris till dina egna.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80" alt="Produkt 1" />
+            <div class="card-content">
+              <h3>Porträttkonst</h3>
+              <p>Personliga porträtt och konstverk med fokus på uttryck och detaljer.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Produkt 2" />
+            <div class="card-content">
+              <h3>Skisser och illustrationer</h3>
+              <p>Skisser och illustrationer som passar både som present och som egen väggkonst.</p>
+              <div class="price">449 kr</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80" alt="Produkt 3" />
+            <div class="card-content">
+              <h3>Originalverk</h3>
+              <p>Originalverk för dig som vill ha något personligt och unikt.</p>
+              <div class="price">599 kr</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="om-oss">
+      <div class="container">
+        <div class="section-head">
+          <h2>Om NewArt ForYou</h2>
+          <p>Berätta kort om din business. Håll det enkelt och tydligt.</p>
+        </div>
+
+        <div class="about">
+          <div class="about-box">
+            <h3>Vår idé</h3>
+            <p>
+              NewArt ForYou visar upp teckningar, målningar och kreativa verk för dig som gillar personlig konst. Fokus ligger på uttryck, detaljer och känsla i varje motiv.
+            </p>
+          </div>
+
+          <div class="about-box">
+            <h3>Varför välja oss</h3>
+            <p>
+              Här får besökaren en tydlig överblick av konstverken och en snabb väg till kontakt via Instagram eller andra uppgifter du vill lägga till.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bilder">
+      <div class="container">
+        <div class="section-head">
+          <h2>Fler bilder</h2>
+          <p>Här kan du visa fler produktbilder, detaljer eller bilder från din verksamhet.</p>
+        </div>
+
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Galleri 1" />
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Galleri 2" />
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80" alt="Galleri 3" />
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80" alt="Galleri 4" />
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>Lägg in dina riktiga kontaktuppgifter här så kunder kan nå dig direkt.</p>
+        </div>
+
+        <div class="contact-box">
+          <h3>Kontakta oss</h3>
+          <ul class="contact-list">
+            <li><strong>Telefon:</strong> 07X-XXX XX XX</li>
+            <li><strong>E-post:</strong> kontakt@newartforyou.se</li>
+            <li><strong>Instagram:</strong> @newartforyou</li>
+            <li><strong>Ort:</strong> Sverige</li>
+          </ul>
+          <p class="note">Lägg gärna till riktig e-post, telefon och eventuell WhatsApp när du vill publicera sidan.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 NewArt ForYou. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+</body>
+</html>
