@@ -4,209 +4,480 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NewArt ForYou</title>
-
-  <!-- LOGO I FLÄKEN -->
-  <link rel="icon" type="image/png" href="Logo.jpg">
-
+  <link rel="icon" type="image/jpeg" href="Logo.jpg">
   <style>
     :root {
-      --bg: #000;
+      --bg: #000000;
       --panel: #0a0a0a;
       --text: #f5f5f5;
-      --muted: #aaa;
-      --gold: #d4af37;
+      --muted: #b8b8b8;
+      --brand: #c9a24a;
+      --brand-strong: #d4af37;
       --border: #1a1a1a;
+      --shadow: 0 10px 30px rgba(0,0,0,.6);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui;
+      font-family: system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
     }
 
-    .container { width: 90%; max-width: 1100px; margin: auto; }
+    a { color: inherit; text-decoration: none; }
 
-    header { background: #050505; border-bottom: 1px solid #111; }
+    img, video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-radius: 14px;
+    }
 
-    .nav { display: flex; justify-content: space-between; padding: 15px 0; }
+    img, video {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
 
-    .logo { color: var(--gold); font-weight: 800; font-size: 22px; }
+    .container {
+      width: min(1150px, 92%);
+      margin: 0 auto;
+    }
 
-    nav a { color: var(--muted); margin-left: 20px; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: #050505;
+      border-bottom: 1px solid #111;
+    }
 
-    nav a:hover { color: var(--gold); }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
 
-    h1 { font-size: 40px; margin: 20px 0; }
+    .logo-text {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: .5px;
+    }
 
-    section { padding: 40px 0; }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    nav a {
+      color: var(--muted);
+      font-size: .96rem;
+    }
 
-    .card {
+    nav a:hover { color: var(--brand); }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(201,162,74,.12);
+      color: var(--brand);
+      border: 1px solid rgba(201,162,74,.28);
+      margin-bottom: 16px;
+      font-size: .92rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 4.3rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #000;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid var(--brand);
+    }
+
+    .hero-card {
+      background: #060606;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card img {
+      max-width: 340px;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+      padding: 16px;
+      background: #000;
+    }
+
+    section { padding: 36px 0; }
+
+    .section-head { margin-bottom: 20px; }
+
+    .section-head h2 {
+      color: var(--brand-strong);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .section-head p,
+    .card p,
+    .about-box p,
+    .contact-box p,
+    .contact-box li,
+    footer {
+      color: var(--muted);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card,
+    .about-box,
+    .contact-box {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
-    .media-row {
+    .card-content,
+    .about-box,
+    .contact-box {
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .price {
+      color: var(--brand);
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .media-strip {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       overflow-x: auto;
-      padding: 10px;
+      padding: 12px;
     }
 
-    .media-row img,
-    .media-row video {
-      width: 140px;
-      height: 180px;
+    .media-strip img,
+    .media-strip video {
+      width: 120px;
+      min-width: 120px;
+      height: 160px;
+      aspect-ratio: auto;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
-    .card-content { padding: 15px; }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--brand);
+      font-weight: 700;
+      margin-top: 10px;
+    }
 
-    .price { color: var(--gold); margin-top: 10px; }
+    .insta-link img {
+      width: 28px;
+      height: 28px;
+      aspect-ratio: auto;
+      object-fit: contain;
+      border-radius: 0;
+      background: transparent;
+    }
 
-    @media(max-width:800px){
-      .grid{grid-template-columns:1fr}
+    footer {
+      padding: 34px 0 50px;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about,
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-grid,
+      .about,
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container nav">
-    <div class="logo">NewArt ForYou</div>
-    <nav>
-      <a href="#">Produkter</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-  </div>
-</header>
-
-<section>
-  <div class="container">
-    <h1>Produkter</h1>
-
-    <div class="grid">
-
-      <!-- KÄRLEKSLÅDAN MED ALLA VIDEOS -->
-      <div class="card">
-        <div class="media-row">
-          <video src="Kärlekslådan1.mp4" controls></video>
-          <video src="Kärlekslådan2.mp4" controls></video>
-          <video src="Kärlekslådan3.mp4" controls></video>
-          <video src="Kärlekslådan4.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>Kärlekslådan</h3>
-          <p>Flera klipp i samma produkt</p>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- DUBAI -->
-      <div class="card">
-        <div class="media-row">
-          <img src="Dubai-cups.jpeg">
-        </div>
-        <div class="card-content">
-          <h3>Dubai Cups</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- LOTUS -->
-      <div class="card">
-        <div class="media-row">
-          <img src="Lotus Cups.jpg">
-          <video src="Lyxkoppar lotus.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>Lotus Cups</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- CHOKLAD -->
-      <div class="card">
-        <div class="media-row">
-          <video src="Lyxkoppar choklad.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>Lyxkoppar choklad</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- OREO -->
-      <div class="card">
-        <div class="media-row">
-          <video src="Lyxkoppar oreo.mp4" controls></video>
-          <img src="Oreo Cups.jpg">
-        </div>
-        <div class="card-content">
-          <h3>Oreo Cups</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- HEART -->
-      <div class="card">
-        <div class="media-row">
-          <video src="Lyxhjärtat.mp4" controls></video>
-          <video src="UnikHeart Bites.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>Hjärtprodukter</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <!-- SNICKERS -->
-      <div class="card">
-        <div class="media-row">
-          <video src="Snickerskaka i bitar.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>Snickerskaka</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="media-row">
-          <video src="UnikBite Pops.mp4" controls></video>
-        </div>
-        <div class="card-content">
-          <h3>UnikBite Pops</h3>
-          <div class="price">Pris på förfrågan</div>
-        </div>
-      </div>
-
+  <header>
+    <div class="container nav">
+      <div class="logo-text">NewArt ForYou</div>
+      <nav>
+        <ul>
+          <li><a href="#produkter">Produkter</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-  </div>
-</section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Dessertbord och presentlådor</div>
+          <h1>NewArt ForYou</h1>
+          <p>Handgjorda dessertboxar, cups och presentprodukter med svart och guld som uttryck.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#produkter">Se produkter</a>
+            <a class="btn btn-secondary" href="#kontakt">Kontakta oss</a>
+          </div>
+        </div>
 
-<section id="kontakt">
-  <div class="container">
-    <h1>Kontakt</h1>
-    <div class="card">
-      <div class="card-content">
-        <p>Beställ via Instagram</p>
-        <a href="https://www.instagram.com/newart_foryou/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-weight:700;">
-          <img src="insta.jpg" alt="Instagram" style="width:28px;height:28px;object-fit:contain;border-radius:0;background:transparent;">
-          <span>newart_foryou</span>
-        </a>
+        <div class="hero-card">
+          <img src="Logo.jpg" alt="NewArt ForYou logo" />
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <section id="produkter">
+      <div class="container">
+        <div class="section-head">
+          <h2>Produkter</h2>
+          <p>Utvalda produkter från sortimentet.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="card">
+            <img src="Dubai-cups.jpeg" alt="Dubai Cups" />
+            <div class="card-content">
+              <h3>Dubai Cups</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="Lotus Cups.jpg" alt="Lotus Cups" />
+            <div class="card-content">
+              <h3>Lotus Cups</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Lyxhjärtat.mp4" controls></video>
+            <div class="card-content">
+              <h3>Lyxhjärta</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Lyxkoppar choklad.mp4" controls></video>
+            <div class="card-content">
+              <h3>Lyxkoppar choklad</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Lyxkoppar mandel.mp4" controls></video>
+            <div class="card-content">
+              <h3>Lyxkoppar mandel</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Lyxkoppar lotus.mp4" controls></video>
+            <div class="card-content">
+              <h3>Lyxkoppar lotus</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Lyxkoppar oreo.mp4" controls></video>
+            <div class="card-content">
+              <h3>Lyxkoppar oreo</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media-strip">
+              <video src="Kärlekslådan1.mp4" controls></video>
+              <video src="Kärlekslådan2.mp4" controls></video>
+              <video src="Kärlekslådan3.mp4" controls></video>
+              <video src="Kärlekslådan4.mp4" controls></video>
+            </div>
+            <div class="card-content">
+              <h3>Kärlekslådan</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="media-strip">
+              <video src="Lyxkoppar med hallon, mango och blåbä.mp4" controls></video>
+              <img src="Lyxkoppar med hallon, mango och blåbär.jpg" alt="Lyxkoppar med hallon, mango och blåbär" />
+            </div>
+            <div class="card-content">
+              <h3>Lyxkoppar med hallon, mango och blåbär</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="Snickerskaka i bitar.mp4" controls></video>
+            <div class="card-content">
+              <h3>Snickerskaka i bitar</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video src="UnikBite Pops.mp4" controls></video>
+            <div class="card-content">
+              <h3>UnikBite Pops</h3>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="om-oss">
+      <div class="container">
+        <div class="section-head">
+          <h2>Om oss</h2>
+          <p>NewArt ForYou erbjuder handgjorda dessertprodukter för beställning.</p>
+        </div>
+
+        <div class="about">
+          <div class="about-box">
+            <h3>Vår idé</h3>
+            <p>Vi skapar dessertprodukter med fokus på utseende, smak och detaljer.</p>
+          </div>
+
+          <div class="about-box">
+            <h3>Beställning</h3>
+            <p>Kontakta oss via Instagram eller telefon för pris, datum och upplägg.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>Kontakta oss direkt för beställning.</p>
+        </div>
+
+        <div class="contact-box">
+          <h3>Kontakta oss</h3>
+          <ul class="contact-list">
+            <li><strong>Telefon:</strong> 07X-XXX XX XX</li>
+          </ul>
+          <a class="insta-link" href="https://www.instagram.com/newart_foryou/" target="_blank" rel="noopener noreferrer">
+            <img src="insta.jpg" alt="Instagram" />
+            <span>newart_foryou</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 NewArt ForYou</p>
+    </div>
+  </footer>
 </body>
 </html>
