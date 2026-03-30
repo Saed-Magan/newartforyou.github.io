@@ -6,18 +6,15 @@
   <title>NewArt ForYou</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --soft: #1f2937;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --line: #334155;
-      --brand: #22c55e;
-      --brand-dark: #16a34a;
-      --white: #ffffff;
-      --shadow: 0 10px 30px rgba(0,0,0,0.18);
-      --radius: 18px;
-    }
+  --bg: #000000;
+  --panel: #0a0a0a;
+  --text: #f5f5f5;
+  --muted: #b8b8b8;
+  --brand: #c9a24a;
+  --brand-strong: #d4af37;
+  --border: #1a1a1a;
+  --shadow: 0 10px 30px rgba(0,0,0,.6);
+}
 
     * {
       box-sizing: border-box;
@@ -26,11 +23,11 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
     a {
       color: inherit;
@@ -141,9 +138,12 @@
     }
 
     .btn-primary {
-      background: var(--brand);
-      color: #052e16;
-    }
+  background: var(--brand);
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+}
 
     .btn-primary:hover {
       background: var(--brand-dark);
@@ -152,10 +152,12 @@
     }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid var(--line);
-    }
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  padding: 10px 18px;
+  border-radius: 8px;
+}
 
     .btn-secondary:hover {
       border-color: var(--white);
@@ -183,9 +185,8 @@
     }
 
     .section-head h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+  color: var(--brand-strong);
+}
 
     .section-head p {
       color: var(--muted);
@@ -199,12 +200,12 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
 
     .card-content {
       padding: 18px;
@@ -221,10 +222,9 @@
     }
 
     .price {
-      display: inline-block;
-      font-weight: 700;
-      color: #86efac;
-    }
+  color: var(--brand);
+  font-weight: bold;
+}
 
     .about {
       display: grid;
@@ -324,20 +324,21 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="badge">Konst och kreativa verk</div>
-          <h1>Unik konst och handgjorda verk på en enkel hemsida</h1>
+          <div class="badge">Dessertbord och presentlådor</div>
+          <h1>NewArt For You</h1>
           <p>
-            En enkel hemsida för att visa upp konstverk, bilder, beskrivningar och kontaktuppgifter. Sidan är nu anpassad efter Instagram-kontot NewArt ForYou och kan fyllas på med fler riktiga verk senare.
+            Handgjorda dessertboxar, cups och presentprodukter. Den här sidan är byggd för att visa riktiga produkter från ditt konto på ett renare sätt.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#produkter">Se produkter</a>
             <a class="btn btn-secondary" href="#kontakt">Kontakta oss</a>
           </div>
-          <p class="note">Tips. Byt namn, bilder, priser och kontaktinfo längre ner i koden.</p>
+          <p class="note">Viktigt. Lägg alla bilder i en mapp som heter media och döp gärna om filerna till enkla namn med små bokstäver.</p>
         </div>
 
-        <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80" alt="Huvudbild för business" />
+        <div class="hero-card" style="display:flex;align-items:center;justify-content:center;min-height:420px;">
+          <!-- Byt filnamnet nedan till exakt det du använder i GitHub, t.ex. media/logo.jpg eller media/logo.png -->
+          <img src="media/Logo.jpg" alt="NewArt For You logo" style="max-width:340px;height:auto;object-fit:contain;background:#000;padding:20px;" />
         </div>
       </div>
     </section>
@@ -351,29 +352,101 @@
 
         <div class="products-grid">
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80" alt="Produkt 1" />
+            <img src="media/Dubai-cups.jpeg" alt="Dubai cups" />>
             <div class="card-content">
-              <h3>Porträttkonst</h3>
-              <p>Personliga porträtt och konstverk med fokus på uttryck och detaljer.</p>
+              <h3>Dubai Cups</h3>
+              <p>Lyxiga dessertcups som visas som en egen produkt på sidan.</p>
               <div class="price">Pris på förfrågan</div>
             </div>
           </article>
 
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Produkt 2" />
+            <img src="media/Lotus Cups.jpg" alt="Lotus cups" />
             <div class="card-content">
-              <h3>Skisser och illustrationer</h3>
-              <p>Skisser och illustrationer som passar både som present och som egen väggkonst.</p>
-              <div class="price">449 kr</div>
+              <h3>Lotus Cups</h3>
+              <p>Lotus-inspirerade cups för dessertbord och beställningar.</p>
+              <div class="price">Pris på förfrågan</div>
             </div>
           </article>
 
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80" alt="Produkt 3" />
+           0%"><source src="media/Lyxhjärtat.mp4" type="video/mp4"></video>
             <div class="card-content">
-              <h3>Originalverk</h3>
-              <p>Originalverk för dig som vill ha något personligt och unikt.</p>
-              <div class="price">599 kr</div>
+              <h3>Lyxhjärta</h3>
+              <p>Hjärtformad produkt som kan visas som present eller specialbeställning.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video controls muted loop playsinline width="10video>
+            <div class="card-content">
+              <h3>Lyxkoppar choklad</h3>
+              <p>Chokladcups som passar som egen produkt i sortimentet.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video controls muted loop playsinline width="100%"><source src="media/Lyxkoppar lotus.mp4" type="video/mp4"></vi>Lyxkoppar lotus</h3>
+              <p>Lotusvariant av lyxkopparna.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video controls muted loop playsinline width="100%"><source src="media/Lyxkoppar mandel.mp4" type="video/mp4"></video>
+            <div class="card-content">
+              <hs som en egen produkt.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <video controls muted loop playsinline width="100%"><source src="media/Lyxkoppar oreo.mp4" type="video/mp4"></video>
+            <div class="card-content">
+              <h3>Lyxkoppar Oreo</h3>
+              <p>Oreo-cups i en ren produktörfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="media/Oreo Cups.jpg" alt="Oreo cups" />
+            <div class="card-content">
+              <h3>Oreo Cups</h3>
+              <p>En egen produkt med tydlig bild och enkel beskrivning.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+eo controls muted loop playsinline width="100%"><source src="media/UnikBite Pops.mp4" type="video/mp4"></video>
+            <div class="card-content">
+              <h3>UnikBite Pops</h3>
+              <p>Små dessertbitar för brickor, event och beställningar.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          <video controls muted loop playsinline width="100%"><source src="media/UnikHeart Bites.mp4" type="video/mp4"></video>
+            <div class="card-content">
+              <h3>UnikHeart Bites</h3>
+              <p>Hjärtbitar som passar till present och fest.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+         e src="media/Snickerskaka i bitar.mp4" type="video/mp4"></video>
+            <div class="card-content">
+              <h3>Snickerskaka i bitar</h3>
+              <p>Serveras i bitar och visas som separat produkt.</p>
+              <div class="price">Pris på förfrågan</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="media/1.jpg" alt="Dessertbord" />
+ >
+              <p>Översiktsbild som visar upplägg och känsla för beställningar.</p>
+              <div class="price">Pris på förfrågan</div>
             </div>
           </article>
         </div>
@@ -384,10 +457,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Om NewArt ForYou</h2>
-          <p>Berätta kort om din business. Håll det enkelt och tydligt.</p>
-        </div>
-
-        <div class="about">
+          <p>Berätta kort om din business. Håll det enkelt och tyss="about">
           <div class="about-box">
             <h3>Vår idé</h3>
             <p>
@@ -408,21 +478,29 @@
     <section id="bilder">
       <div class="container">
         <div class="section-head">
-          <h2>Fler bilder</h2>
-          <p>Här kan du visa fler produktbilder, detaljer eller bilder från din verksamhet.</p>
+          <h2>Produktgalleri</h2>
+          <p>Här kan du samla flera bilder under samma produkt. Bilder med 1, 2, 3 och 4 i namnet ligger i samma inlägg eller produkt.</p>
         </div>
 
-        <div class="gallery">
-          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Galleri 1" />
-          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Galleri 2" />
-          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80" alt="Galleri 3" />
-          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80" alt="Galleri 4" />
-        </div>
-      </div>
-    </section>
+        <div class="about" style="grid-template-columns:1fr;">
+          <div class="about-box">
+            <h3>Kärlekslådan</h3>
+            <p>Alla bilder nedan tillhör samma produkt.</p>
+            <div class="gallery" style="margin-top:18px;">
+              <video controls muted loop playsinline width="100%"><source src="media/Kärlekslådan1.mp4" type="video/mp4"></video>
+              <video controls muted loop playsinline width="100%"><source src="media/Kärlekslådan2.mp4" type="video/mp4"></video>
+              <video controls muted loop playsinline width="100%"><source src="media/Kärlekslådan3.mp4" type="video/mp4"></video>
+              <video controls muted loop playsinline width="100%"><source src="media/Kärlekslådan4.mp4" type="video/mp4"></video>
+            </div>
+          </div>
 
-    <section id="kontakt">
-      <div class="container">
+          <div class="about-box">
+         <p>Dessa bilder hör också ihop och visas som en och samma produkt.</p>
+            <div class="gallery" style="margin-topeo controls muted loop playsinline width="100%"><source src="media/Lyxkoppar med hallon, mango och blåbä.mp4" type="video/mp4"></v och blåbär.jpg" alt="Lyxkoppar med hallon, mango och blåbär bild 2" />
+            </div>
+          </div>
+        </div>
+      <ss="container">
         <div class="section-head">
           <h2>Kontakt</h2>
           <p>Lägg in dina riktiga kontaktuppgifter här så kunder kan nå dig direkt.</p>
@@ -433,18 +511,10 @@
           <ul class="contact-list">
             <li><strong>Telefon:</strong> 07X-XXX XX XX</li>
             <li><strong>E-post:</strong> kontakt@newartforyou.se</li>
-            <li><strong>Instagram:</strong> @newartforyou</li>
-            <li><strong>Ort:</strong> Sverige</li>
-          </ul>
-          <p class="note">Lägg gärna till riktig e-post, telefon och eventuell WhatsApp när du vill publicera sidan.</p>
+            <li><strong>  <p class="note">Lägg gärna till riktig e-post, telefon och eventuell WhatsApp när du vill publicera sidan.</p>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 NewArt ForYou. Alla rättigheter förbehållna.</p>
+    </sectionp>
     </div>
   </footer>
 </body>
